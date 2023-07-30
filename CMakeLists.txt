@@ -6,6 +6,7 @@ include(ExternalDependencies)
 include(GenerateDocumentation)
 include(Testing)
 include(Format)
+include(Linter)
 
 add_subdirectory(src)
 add_subdirectory(test)
