@@ -1,10 +1,13 @@
 #! /bin/bash
 
-echo "Building TIS..."
-
 mkdir -p build
 cd build
 cmake .. -DCMAKE_BUILD_TYPE=Debug
+
+echo "Running clang-format..."
+cmake  --build . -t format
+
+echo "Building TIS..."
 cmake  --build .
 
 echo "Running tests..."
