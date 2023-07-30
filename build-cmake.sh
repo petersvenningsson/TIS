@@ -1,5 +1,11 @@
 #! /bin/bash
 
+echo "Building TIS..."
+
 mkdir -p build
-cmake -B build -S .
-cmake --build build
+cd build
+cmake ..
+cmake --build .
+
+echo "Running tests..."
+ctest . --rerun-failed --output-on-failure
