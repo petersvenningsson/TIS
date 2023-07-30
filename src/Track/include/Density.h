@@ -22,7 +22,11 @@
  *
  * Eigen::Vector3d detection;
  * detection << 3, 1;
- * density.update(detection); // Update the density with a detection
+ *	Eigen::Matrix3d R;
+ * 	R << 1.0, 0.0, 0.0,
+ * 	     0.0, 0.0, 0.0,
+ *		 0.0, 0.0, 1.0;
+ * density.update(detection, R); // Update the density with a detection
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 class Density

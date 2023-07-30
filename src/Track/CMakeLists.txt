@@ -16,5 +16,6 @@ target_include_directories(Track PUBLIC
                            ${include_paths}
                            )
 
-target_link_libraries(Track PUBLIC Eigen3::Eigen)
+target_link_libraries(Track PUBLIC
+	                  Eigen3::Eigen)
 

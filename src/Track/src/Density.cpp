@@ -9,8 +9,9 @@
 Density::Density(Eigen::Vector3d detection)
 {
 	x_ = detection;
-	P_ << 10, 0,
-	      0, 10;
+	P_ << 10, 0, 0,
+	      0, 10, 0,
+		  0, 0, 10;
 }
 
 /**
