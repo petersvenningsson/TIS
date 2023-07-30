@@ -1,17 +1,15 @@
-#include <chrono>
 #include "Density.h"
+
+#include <chrono>
 
 /**
  * Constructor which initializes a density from a 3D point.
  *
  * A density must be initialized from a 3D point.
  */
-Density::Density(Eigen::Vector3d detection)
-{
-	x_ = detection;
-	P_ << 10, 0, 0,
-	      0, 10, 0,
-		  0, 0, 10;
+Density::Density(Eigen::Vector3d detection) {
+  x_ = detection;
+  P_ << 10, 0, 0, 0, 10, 0, 0, 0, 10;
 }
 
 /**
@@ -23,11 +21,9 @@ Density::Density(Eigen::Vector3d detection)
  *
  * Notation follows https://en.wikipedia.org/wiki/Kalman_filter
  */
-void Density::update(Eigen::Vector3d detection, Eigen::Matrix3d R)
-{
-	Eigen::Matrix3d S = P_ + R;
-	Eigen::Matrix3d K = P_ * S.inverse();
-	x_  = x_ + K * (detection - x_);
-	P_ = P_ + (Eigen::MatrixXd::Identity(3,3) - K) * P_;
+void Density::update(Eigen::Vector3d detection, Eigen::Matrix3d R) {
+  Eigen::Matrix3d S = P_ + R;
+  Eigen::Matrix3d K = P_ * S.inverse();
+  x_ = x_ + K * (detection - x_);
+  P_ = P_ + (Eigen::MatrixXd::Identity(3, 3) - K) * P_;
 }
-

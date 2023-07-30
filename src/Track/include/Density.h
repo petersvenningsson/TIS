@@ -29,28 +29,32 @@
  * density.update(detection, R); // Update the density with a detection
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
-class Density
-{
-	public:
-		Density(Eigen::Vector3d);
-		void update(Eigen::Vector3d detection, Eigen::Matrix3d R);
-		/**
-		 * Method which maps the distribtion of t to t+1 using a process model.
-		 *
-		 * @param detection a measurement of the density.
-		 * @param R the covariance matrix of the measurement noise.
-		 */
-		void predict(double Ts) {}
-		/**
-		 * @returns the mean of the distribution
-		 */
-		Eigen::Vector3d x() {return x_;}
-		/**
-		 * @returns the covariance of the distribution
-		 */
-		Eigen::Matrix3d P() {return P_;}
-	private:
-		Eigen::Vector3d x_;
-		Eigen::Matrix3d P_;
-};
+class Density {
+ public:
+  Density(Eigen::Vector3d);
+  void update(Eigen::Vector3d detection, Eigen::Matrix3d R);
+  /**
+   * Method which maps the distribtion of t to t+1 using a process model.
+   *
+   * @param detection a measurement of the density.
+   * @param R the covariance matrix of the measurement noise.
+   */
+  void predict(double Ts) {
+  }
+  /**
+   * @returns the mean of the distribution
+   */
+  Eigen::Vector3d x() {
+    return x_;
+  }
+  /**
+   * @returns the covariance of the distribution
+   */
+  Eigen::Matrix3d P() {
+    return P_;
+  }
 
+ private:
+  Eigen::Vector3d x_;
+  Eigen::Matrix3d P_;
+};

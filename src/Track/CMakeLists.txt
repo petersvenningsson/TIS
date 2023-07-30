@@ -19,4 +19,5 @@ target_include_directories(Track PUBLIC
 target_link_libraries(Track PUBLIC
 	                  Eigen3::Eigen)
 
+include(Coverage)
 EnableCoverage(Track)
