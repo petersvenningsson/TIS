@@ -13,7 +13,6 @@ cmake --build .
 echo "Running clang-tidy..."
 cmake --build . -t linter
 
-
 echo "Running tests..."
 ctest . --rerun-failed --output-on-failure
 
