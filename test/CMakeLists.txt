@@ -14,5 +14,8 @@ target_link_libraries(unit-tests PRIVATE
 	                  Track
 					  Eigen3::Eigen)
 
+target_compile_definitions(Track PUBLIC
+	-DUNIT_TEST)
+
 AddTests(unit-tests)
 EnableCoverage(unit-tests)

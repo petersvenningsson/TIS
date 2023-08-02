@@ -7,6 +7,7 @@ include(GenerateDocumentation)
 include(Testing)
 include(Format)
 include(Linter)
+include(Config)
 
 add_subdirectory(src)
 add_subdirectory(test)

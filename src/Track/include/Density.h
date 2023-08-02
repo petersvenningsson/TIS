@@ -18,7 +18,8 @@
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.cpp
  * Eigen::Vector3d prior;
  * prior << 1, 1;
- * Density density(prior); // Initialize the density
+ * sigma_velocity = 1.0;
+ * Density density(prior, sigma_velocity); // Initialize the density
  *
  * Eigen::Vector3d detection;
  * detection << 3, 1;
@@ -30,31 +31,21 @@
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 class Density {
- public:
-  Density(Eigen::Vector3d);
-  void update(Eigen::Vector3d detection, Eigen::Matrix3d R);
-  /**
-   * Method which maps the distribtion of t to t+1 using a process model.
-   *
-   * @param detection a measurement of the density.
-   * @param R the covariance matrix of the measurement noise.
-   */
-  void predict(double Ts) {
-  }
-  /**
-   * @returns the mean of the distribution
-   */
-  Eigen::Vector3d x() {
-    return x_;
-  }
-  /**
-   * @returns the covariance of the distribution
-   */
-  Eigen::Matrix3d P() {
-    return P_;
-  }
+   public:
+    Density(Eigen::Vector3d, double);
+    void update(Eigen::Vector3d detection, Eigen::Matrix3d R);
+    void predict(double dt);
+    Eigen::Matrix<double, 6, 1> x() {
+        return x_;
+    }
+    Eigen::Matrix<double, 6, 6> P() {
+        return P_;
+    }
 
- private:
-  Eigen::Vector3d x_;
-  Eigen::Matrix3d P_;
+#ifndef UNIT_TEST
+   private:
+#endif
+    Eigen::Matrix<double, 6, 1> x_;
+    Eigen::Matrix<double, 6, 6> P_;
+    double sigma_velocity_;
 };
