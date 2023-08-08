@@ -10,8 +10,6 @@ class LinearGaussianMeasurementModel {
     LinearGaussianMeasurementModel(
         const Eigen::Matrix<double, 3, 3>& noise_covariance);
     Eigen::Matrix<double, 3, 6> matrix(void);
-    Eigen::Matrix<double, 3, 1> function(
-        const Eigen::Matrix<double, 6, 1>& state);
     Eigen::Matrix<double, 3, 3> covariance(void);
 #ifndef UNIT_TEST
    private:

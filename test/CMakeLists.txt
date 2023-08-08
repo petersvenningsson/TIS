@@ -5,6 +5,7 @@ include(Testing)
 set(test_source
 	${CMAKE_CURRENT_LIST_DIR}/track/Density_test.cpp
 	${CMAKE_CURRENT_LIST_DIR}/models/LinearGaussianMeasurementModel_test.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/models/ConstantVelocityTransitionModel_test.cpp
 	)
 
 add_executable(unit-tests

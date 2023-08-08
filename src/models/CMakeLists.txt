@@ -5,7 +5,7 @@ set(include_paths
     )
 
   set(source_files
-      #${CMAKE_CURRENT_LIST_DIR}/src/ConstantVelocityTransitionModel.cpp
+      ${CMAKE_CURRENT_LIST_DIR}/src/ConstantVelocityTransitionModel.cpp
       ${CMAKE_CURRENT_LIST_DIR}/src/LinearGaussianMeasurementModel.cpp
       )
 

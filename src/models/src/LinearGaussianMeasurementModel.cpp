@@ -13,11 +13,6 @@ Eigen::Matrix<double, 3, 6> LinearGaussianMeasurementModel::matrix(void) {
     return matrix_;
 }
 
-Eigen::Matrix<double, 3, 1> LinearGaussianMeasurementModel::function(
-    const Eigen::Matrix<double, 6, 1>& state) {
-    return matrix_ * state;
-}
-
 Eigen::Matrix<double, 3, 3> LinearGaussianMeasurementModel::covariance(void) {
     return noise_covariance_;
 }
