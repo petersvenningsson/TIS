@@ -4,6 +4,7 @@ include(Testing)
 
 set(test_source
 	${CMAKE_CURRENT_LIST_DIR}/track/Density_test.cpp
+	${CMAKE_CURRENT_LIST_DIR}/models/LinearGaussianMeasurementModel_test.cpp
 	)
 
 add_executable(unit-tests
@@ -12,6 +13,7 @@ add_executable(unit-tests
 
 target_link_libraries(unit-tests PRIVATE
 	                  track
+	                  models 
 					  Eigen3::Eigen)
 
 target_compile_definitions(track PUBLIC
