@@ -6,18 +6,19 @@ set(include_paths
 
   set(source_files
   ${CMAKE_CURRENT_LIST_DIR}/src/Density.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/src/Track.cpp
     )
 
-add_library(Track OBJECT
+add_library(track OBJECT
            ${source_files}
            )
 
-target_include_directories(Track PUBLIC
+target_include_directories(track PUBLIC
                            ${include_paths}
                            )
 
-target_link_libraries(Track PUBLIC
+target_link_libraries(track PUBLIC
 	                  Eigen3::Eigen)
 
 include(Coverage)
-EnableCoverage(Track)
+EnableCoverage(track)
