@@ -6,6 +6,7 @@ set(include_paths
 
   set(source_files
     ${CMAKE_CURRENT_LIST_DIR}/src/Hypothesis.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/State.cpp
     )
 
 add_library(types OBJECT

@@ -1,6 +1,7 @@
 #pragma once
 
-#include "Association.h"
+#include "Detection.h"
+#include "Track.h"
 
 /**
  * A class descring a hypothesis based on a single measurement.
@@ -11,10 +12,14 @@
  */
 class Hypothesis {
    public:
-    Hypothesis(const Association& association, const double& distance);
+    Hypothesis(const Track& track, const double& distance);
+    Hypothesis(const Track& track, const Detection& detection,
+               const double& distance);
 #ifndef UNIT_TEST
    private:
 #endif
-    Association association_;
+    Track track_;
+    Detection detection_;
     double distance_;
+    bool missedDetection_;
 };

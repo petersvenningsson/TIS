@@ -1,5 +1,13 @@
 #include "Hypothesis.h"
 
-Hypothesis::Hypothesis(const Association& association, const double& distance)
-    : association_(association), distance_(distance) {
+Hypothesis::Hypothesis(const Track& track, const Detection& detection,
+                       const double& distance)
+    : track_(track),
+      detection_(detection),
+      distance_(distance),
+      missedDetection_(false) {
+}
+
+Hypothesis::Hypothesis(const Track& track, const double& distance)
+    : track_(track), distance_(distance), missedDetection_(true) {
 }
