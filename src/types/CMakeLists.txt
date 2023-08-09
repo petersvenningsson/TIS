@@ -6,7 +6,7 @@ set(include_paths
 
   set(source_files
     ${CMAKE_CURRENT_LIST_DIR}/src/Hypothesis.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/src/State.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/Detection.cpp
     )
 
 add_library(types OBJECT
@@ -22,4 +22,4 @@ target_link_libraries(types PUBLIC
 	                  Eigen3::Eigen)
 
 include(Coverage)
-EnableCoverage(track)
+EnableCoverage(types)
