@@ -1,3 +1,5 @@
+#pragma once
+
 #include <Eigen/Dense>
 #include <chrono>
 
@@ -13,6 +15,7 @@ class Detection {
     Detection(Eigen::Matrix<double, 3, 1> vector);
     Detection(Eigen::Matrix<double, 3, 1> vector,
               std::chrono::time_point<std::chrono::system_clock> timestamp);
+    Eigen::Matrix<double, 3, 1> vector() const;
 
    private:
     Eigen::Matrix<double, 3, 1> vector_;

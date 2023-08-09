@@ -9,3 +9,7 @@ Detection::Detection(
     std::chrono::time_point<std::chrono::system_clock> timestamp)
     : vector_(vector), timestamp_(timestamp) {
 }
+
+Eigen::Matrix<double, 3, 1> Detection::vector() const {
+    return vector_;
+}

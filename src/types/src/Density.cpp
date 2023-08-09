@@ -3,6 +3,17 @@
 #include <chrono>
 
 /**
+ * Temporary constructor with default sigma_variance
+ *
+ * @param detection track initialization point
+ */
+Density::Density(const Eigen::Vector3d& detection) : sigma_velocity_{1.0} {
+    x_ << detection(0), detection(1), detection(2), 0, 0, 0;
+    P_ = Eigen::MatrixXd::Identity(6, 6);
+    P_ = P_ * 10;
+}
+
+/**
  * Constructor which initializes a density from a 3D point.
  *
  * A density must be initialized from a 3D point.
@@ -10,7 +21,8 @@
  * @param detection track initialization point
  * @param sigma_velocity_ the velocity covariance
  */
-Density::Density(Eigen::Vector3d detection, double sigma_velocity)
+Density::Density(const Eigen::Vector3d& detection,
+                 const double& sigma_velocity)
     : sigma_velocity_{sigma_velocity} {
     x_ << detection(0), detection(1), detection(2), 0, 0, 0;
     P_ = Eigen::MatrixXd::Identity(6, 6);

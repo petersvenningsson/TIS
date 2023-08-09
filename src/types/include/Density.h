@@ -32,7 +32,8 @@
  */
 class Density {
    public:
-    Density(Eigen::Vector3d, double);
+    Density(const Eigen::Vector3d&);
+    Density(const Eigen::Vector3d&, const double&);
     void update(Eigen::Vector3d detection, Eigen::Matrix3d R);
     void predict(double dt);
     Eigen::Matrix<double, 6, 1> x() {

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <optional>
+
 #include "Detection.h"
 #include "Track.h"
 
@@ -15,11 +17,14 @@ class Hypothesis {
     Hypothesis(const Track& track, const double& distance);
     Hypothesis(const Track& track, const Detection& detection,
                const double& distance);
+
+    bool operator<(const Hypothesis& rhs) const;
+
 #ifndef UNIT_TEST
    private:
 #endif
     Track track_;
-    Detection detection_;
+    std::optional<Detection> detection_;
     double distance_;
-    bool missedDetection_;
+    bool missed_detection_;
 };
