@@ -36,10 +36,10 @@ class Density {
     Density(const Eigen::Vector3d&, const double&);
     void update(Eigen::Vector3d detection, Eigen::Matrix3d R);
     void predict(double dt);
-    Eigen::Matrix<double, 6, 1> x() {
+    Eigen::Matrix<double, 6, 1> x() const {
         return x_;
     }
-    Eigen::Matrix<double, 6, 6> P() {
+    Eigen::Matrix<double, 6, 6> P() const {
         return P_;
     }
 

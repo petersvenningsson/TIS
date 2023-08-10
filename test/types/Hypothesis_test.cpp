@@ -3,19 +3,24 @@
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
-TEST(DensityTest, update) {
+#define PRIOR_POSITION (0.0)
+#define SIGMA_VELOCITY (1.0)
+#define MISSED_DISTANCE (5.0)
+
+TEST(HypothesisTest, comparison) {
     Eigen::Vector3d prior;
     prior << PRIOR_POSITION, PRIOR_POSITION, PRIOR_POSITION;
     Density density(prior, SIGMA_VELOCITY);
+    Track track(density);
 
-    Eigen::Vector3d detection;
-    detection << MEASURED_POSITION, MEASURED_POSITION, MEASURED_POSITION;
-    Eigen::Matrix3d R;
-    R << MEASURED_POSITION, 0.0, 0.0, 0.0, MEASURED_POSITION, 0.0, 0.0, 0.0,
-        MEASURED_POSITION;
-    density.update(detection, R);
+    Eigen::Matrix<double, 3, 1> vector_rhs(1.0, 1.0, 1.0);
+    Detection detection_rhs(vector_rhs);
+    Hypothesis hypothesis_rhs(track, detection_rhs, 1.0);
 
-    EXPECT_THAT(density.x()(0),
-                testing::AllOf(testing::Ge(PRIOR_POSITION),
-                               testing::Le(MEASURED_POSITION)));
+    Eigen::Matrix<double, 3, 1> vector_lhs(PRIOR_POSITION, PRIOR_POSITION,
+                                           PRIOR_POSITION);
+    Detection detection_lhs(vector_lhs);
+    Hypothesis hypothesis_lhs(track, detection_lhs, 0.0);
+
+    EXPECT_TRUE(hypothesis_lhs < hypothesis_rhs);
 }

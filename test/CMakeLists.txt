@@ -4,8 +4,10 @@ include(Testing)
 
 set(test_source
 	${CMAKE_CURRENT_LIST_DIR}/types/Density_test.cpp
+	${CMAKE_CURRENT_LIST_DIR}/types/Hypothesis_test.cpp
 	${CMAKE_CURRENT_LIST_DIR}/models/LinearGaussianMeasurementModel_test.cpp
     ${CMAKE_CURRENT_LIST_DIR}/models/ConstantVelocityTransitionModel_test.cpp
+	${CMAKE_CURRENT_LIST_DIR}/hypothesiser/Hypothesiser_test.cpp
 	)
 
 add_executable(unit-tests
@@ -15,6 +17,7 @@ add_executable(unit-tests
 target_link_libraries(unit-tests PRIVATE
 	                  types
                       models 
+                      hypothesiser 
 					  Eigen3::Eigen)
 
 target_compile_definitions(types PUBLIC
