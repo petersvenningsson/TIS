@@ -6,6 +6,7 @@ set(include_paths
 
   set(source_files
     ${CMAKE_CURRENT_LIST_DIR}/src/Hypothesis.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/JointHypothesis.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/Detection.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/Track.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/Density.cpp

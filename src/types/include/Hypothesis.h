@@ -18,13 +18,13 @@ class Hypothesis {
     Hypothesis(const Track& track, const Detection& detection,
                const double& distance);
 
+    double weight(void) const;
     bool operator<(const Hypothesis& rhs) const;
-
 #ifndef UNIT_TEST
    private:
 #endif
     Track track_;
     std::optional<Detection> detection_;
-    double distance_;
+    double weight_;
     bool missed_detection_;
 };
