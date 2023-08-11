@@ -17,9 +17,17 @@ class Detection {
               std::chrono::time_point<std::chrono::system_clock> timestamp);
     Eigen::Matrix<double, 3, 1> vector() const;
 
-    bool operator<(const Point &o) const;
+    bool operator<(const Detection& rhs) const;
+    bool operator>(const Detection& rhs) const;
+    bool operator==(const Detection& rhs) const;
 
+    size_t id(void) const;
+#ifndef UNIT_TEST
    private:
+#endif
     Eigen::Matrix<double, 3, 1> vector_;
     std::chrono::time_point<std::chrono::system_clock> timestamp_;
+
+    static size_t id_count;
+    size_t id_;
 };

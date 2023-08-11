@@ -5,6 +5,7 @@ include(Testing)
 set(test_source
 	${CMAKE_CURRENT_LIST_DIR}/types/Density_test.cpp
 	${CMAKE_CURRENT_LIST_DIR}/types/Hypothesis_test.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/types/Detection_test.cpp
 	${CMAKE_CURRENT_LIST_DIR}/models/LinearGaussianMeasurementModel_test.cpp
     ${CMAKE_CURRENT_LIST_DIR}/models/ConstantVelocityTransitionModel_test.cpp
 	${CMAKE_CURRENT_LIST_DIR}/hypothesiser/Hypothesiser_test.cpp
