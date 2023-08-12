@@ -1,5 +1,8 @@
 #include "UniqueId.h"
 
+#include <algorithm>
+#include <vector>
+
 size_t UniqueId::id_count = 0;
 
 UniqueId::UniqueId(void) : id_(UniqueId::id_count++) {
