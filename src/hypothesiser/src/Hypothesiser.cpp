@@ -2,14 +2,7 @@
 
 #include <algorithm>
 
-/*
- * for (const auto& elem : set_to_remove) {
-    myset.erase(elem);
- }
- *
- *
- *
- * */
+static const double epsilon(1e-6);
 
 Hypothesiser::Hypothesiser(double missed_distance)
     : missed_distance_(missed_distance) {
@@ -26,7 +19,7 @@ std::vector<Hypothesis> Hypothesiser::hypothesise(
     std::vector<Hypothesis> hypotheses;
 
     // Add missed detection hypothesis
-    hypotheses.push_back(Hypothesis(track, missed_distance_));
+    hypotheses.push_back(Hypothesis(track, 1 / (missed_distance_ + epsilon)));
 
     for (Detection detection : detections) {
         double distance =
@@ -35,10 +28,11 @@ std::vector<Hypothesis> Hypothesiser::hypothesise(
                        track.x()(2) - detection.vector()(2));
 
         if (distance < missed_distance_) {
-            hypotheses.push_back(Hypothesis(track, detection, distance));
+            hypotheses.push_back(
+                Hypothesis(track, detection, 1 / (distance + epsilon)));
         }
     }
 
-    std::sort(hypotheses.begin(), hypotheses.end());
+    std::sort(hypotheses.rbegin(), hypotheses.rend());
     return hypotheses;
 }

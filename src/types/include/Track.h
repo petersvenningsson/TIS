@@ -6,7 +6,7 @@
 
 /**
  */
-class Track {
+class Track : public UniqueId {
    public:
     Track(const Density& density);
     Track(const Detection& detection);

@@ -14,12 +14,15 @@
  */
 class Hypothesis {
    public:
-    Hypothesis(const Track& track, const double& distance);
-    Hypothesis(const Track& track, const Detection& detection,
-               const double& distance);
+    Hypothesis(const Track& track, double weight);
+    Hypothesis(const Track& track, const Detection& detection, double weight);
 
     double weight(void) const;
     bool operator<(const Hypothesis& rhs) const;
+    bool operator>(const Hypothesis& rhs) const;
+    bool operator==(const Hypothesis& rhs) const;
+    std::optional<Detection> detection(void) const;
+    Track track(void) const;
 #ifndef UNIT_TEST
    private:
 #endif

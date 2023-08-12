@@ -27,5 +27,5 @@ TEST(HypothesiserTest, comparison) {
     std::vector<Hypothesis> hypotheses = hypothesiser.hypothesise(
         track, detections, std::chrono::steady_clock::now());
 
-    EXPECT_TRUE(hypotheses[0] < hypotheses[1]);
+    EXPECT_TRUE(hypotheses[0] > hypotheses[1]);
 }
