@@ -39,7 +39,26 @@ TEST(JointHypothesisTest, IsNotValid) {
     ASSERT_FALSE(isValid);
 }
 
-TEST(JointHypothesisTest, IsValid) {
+TEST(JointHypothesisTest, IsNotValidTrack) {
+    Eigen::Vector3d vec1{1.0, 2.0, 3.0};
+    Eigen::Vector3d vec2{2.0, 1.0, 3.0};
+    Track track1{Detection(vec1)};
+    Detection detection1{vec1};
+    Detection detection2{vec2};
+
+    Hypothesis hypo1(track1, detection1, 0.8);
+    Hypothesis hypo2(track1, detection2, 0.8);
+
+    std::vector<Hypothesis> hypotheses;
+    hypotheses.push_back(hypo1);
+    hypotheses.push_back(hypo2);
+
+    JointHypothesis jointHypo(hypotheses);
+    bool isValid = jointHypo.isValid();
+    ASSERT_FALSE(isValid);
+}
+
+TEST(JointHypothesisTest, IsValidDetection) {
     Eigen::Vector3d vec1{1.0, 2.0, 3.0};
     Eigen::Vector3d vec2{2.0, 1.0, 3.0};
     Track track1{Detection(vec1)};
