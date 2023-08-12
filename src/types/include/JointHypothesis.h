@@ -10,8 +10,13 @@ class JointHypothesis {
    public:
     JointHypothesis(const std::vector<Hypothesis>& hypotheses);
 
-    bool operator<(const Hypothesis& rhs) const;
-    bool operator>(const Hypothesis& rhs) const;
+    bool operator<(const JointHypothesis& rhs) const;
+    bool operator>(const JointHypothesis& rhs) const;
+    bool operator==(const JointHypothesis& rhs) const;
+
+    std::vector<Hypothesis> hypotheses(void) const;
+    bool isValid(void) const;
+    double weight(void) const;
 
 #ifndef UNIT_TEST
    private:
