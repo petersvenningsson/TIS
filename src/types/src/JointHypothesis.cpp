@@ -50,16 +50,29 @@ bool JointHypothesis::CheckUniqueness(
     }
 }
 
+std::vector<Hypothesis> JointHypothesis::hypotheses(void) const {
+    return hypotheses_;
+}
+
 bool JointHypothesis::operator<(const JointHypothesis& rhs) const {
     return weight() < rhs.weight();
 }
 
 bool JointHypothesis::operator>(const JointHypothesis& rhs) const {
-    return weight() < rhs.weight();
+    return weight() > rhs.weight();
 }
 
 bool JointHypothesis::operator==(const JointHypothesis& rhs) const {
-    return weight() < rhs.weight();
+    if (hypotheses().size() == rhs.hypotheses().size()) {
+        for (size_t i = 0; i < hypotheses().size(); i++) {
+            if (hypotheses()[i] != rhs.hypotheses()[i]) {
+                return false;
+            }
+        }
+        return true;
+    } else {
+        return false;
+    }
 }
 
 double JointHypothesis::weight(void) const {
