@@ -10,6 +10,7 @@ set(test_source
 	${CMAKE_CURRENT_LIST_DIR}/models/LinearGaussianMeasurementModel_test.cpp
     ${CMAKE_CURRENT_LIST_DIR}/models/ConstantVelocityTransitionModel_test.cpp
 	${CMAKE_CURRENT_LIST_DIR}/hypothesiser/Hypothesiser_test.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/dataassociator/DataAssociator_test.cpp
 	)
 
 add_executable(unit-tests
@@ -20,6 +21,7 @@ target_link_libraries(unit-tests PRIVATE
 	                  types
                       models 
                       hypothesiser 
+                      dataassociator
 					  Eigen3::Eigen)
 
 target_compile_definitions(types PUBLIC
