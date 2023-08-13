@@ -30,6 +30,10 @@ bool Hypothesis::operator==(const Hypothesis& rhs) const {
     }
 }
 
+bool Hypothesis::operator!=(const Hypothesis& rhs) const {
+    return !(*this == rhs);
+}
+
 double Hypothesis::weight(void) const {
     return weight_;
 }
@@ -40,4 +44,8 @@ std::optional<Detection> Hypothesis::detection(void) const {
 
 Track Hypothesis::track(void) const {
     return track_;
+}
+
+bool Hypothesis::missed_detection(void) const {
+    return missed_detection_;
 }

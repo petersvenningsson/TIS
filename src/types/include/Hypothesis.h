@@ -21,8 +21,10 @@ class Hypothesis {
     bool operator<(const Hypothesis& rhs) const;
     bool operator>(const Hypothesis& rhs) const;
     bool operator==(const Hypothesis& rhs) const;
+    bool operator!=(const Hypothesis& rhs) const;
     std::optional<Detection> detection(void) const;
     Track track(void) const;
+    bool missed_detection(void) const;
 #ifndef UNIT_TEST
    private:
 #endif
