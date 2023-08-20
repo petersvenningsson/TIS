@@ -51,6 +51,19 @@ void Density::update(Eigen::Vector3d detection, Eigen::Matrix3d R) {
 }
 
 /**
+ * Method which updates the distribution with a measurement asuming
+ * that measurement noise follow a normal distribution.
+ *
+ * @param detection the object detection.
+ */
+void Density::update(const Detection& detection) {
+    Eigen::Matrix3d R;
+    R << 0.1, 0.0, 0.0, 0.0, 0.1, 0.0, 0.0, 0.0, 0.1;
+
+    update(detection.vector(), R);
+}
+
+/**
  * Method which maps the density from t to t+1 using a constant velocity
  * dynamical model.
  *

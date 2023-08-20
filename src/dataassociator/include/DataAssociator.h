@@ -1,5 +1,8 @@
 #pragma once
 
+#include <map>
+#include <vector>
+
 #include "Hypothesiser.h"
 #include "JointHypothesis.h"
 
@@ -11,7 +14,7 @@ class DataAssociator {
    public:
     DataAssociator(const Hypothesiser&);
     JointHypothesis associate(
-        const std::vector<Track>& tracks,
+        const std::map<size_t, Track>& tracks,
         const std::vector<Detection>& detections,
         const std::chrono::time_point<std::chrono::steady_clock>& timestamp);
 #ifndef UNIT_TEST
