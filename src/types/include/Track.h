@@ -11,6 +11,7 @@ class Track : public UniqueId {
     Track(const Density& density);
     Track(const Detection& detection);
 
+    void update(const Detection& detection);
     Eigen::Matrix<double, 6, 1> x() const;
     Eigen::Matrix<double, 6, 6> P() const;
 

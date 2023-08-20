@@ -4,12 +4,14 @@ DataAssociator::DataAssociator(const Hypothesiser& hypothesiser)
     : hypothesiser_(hypothesiser) {
 }
 
+/* Make this a template function for any container */
 JointHypothesis DataAssociator::associate(
-    const std::vector<Track>& tracks, const std::vector<Detection>& detections,
+    const std::map<size_t, Track>& tracks,
+    const std::vector<Detection>& detections,
     const std::chrono::time_point<std::chrono::steady_clock>& timestamp) {
     /* for each track generate its hypotheses */
     std::vector<std::vector<Hypothesis>> hypotheses_by_track;
-    for (auto track : tracks) {
+    for (auto [unused, track] : tracks) {
         auto hypotheses =
             hypothesiser_.hypothesise(track, detections, timestamp);
         hypotheses_by_track.push_back(hypotheses);

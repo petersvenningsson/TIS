@@ -2,6 +2,8 @@
 
 #include <Eigen/Dense>
 
+#include "Detection.h"
+
 /**
  * A class describing a bi-variate normal distribution density.
  *
@@ -35,6 +37,7 @@ class Density {
     Density(const Eigen::Vector3d&);
     Density(const Eigen::Vector3d&, const double&);
     void update(Eigen::Vector3d detection, Eigen::Matrix3d R);
+    void update(const Detection& detection);
     void predict(double dt);
     Eigen::Matrix<double, 6, 1> x() const {
         return x_;
