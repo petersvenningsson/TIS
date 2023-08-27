@@ -8,18 +8,6 @@ class DataAssociatorTest : public ::testing::Test {
     DataAssociator dataAssociator{hypothesiser};
 };
 
-/*
-TEST_F(DataAssociatorTest, TestEmptyTracksAndDetections) {
-    std::vector<Track> tracks;
-    std::vector<Detection> detections;
-
-    auto result = dataAssociator.associate(tracks, detections,
-                                           std::chrono::steady_clock::now());
-
-    EXPECT_EQ(result, JointHypothesis{});
-}
-*/
-
 TEST_F(DataAssociatorTest, JointHypothesisTrueDetection) {
     Eigen::Vector3d detection1_vec(1, 1, 1);
     Eigen::Vector3d detection2_vec(2, 2, 2);
@@ -32,7 +20,8 @@ TEST_F(DataAssociatorTest, JointHypothesisTrueDetection) {
     Density density2(detection2_vec_pertubated);
     Track track1(density1);
     Track track2(density2);
-    std::vector<Track> tracks{track1, track2};
+    std::map<size_t, Track> tracks{{track1.id(), track1},
+                                   {track2.id(), track2}};
 
     JointHypothesis joint_hypothesis = dataAssociator.associate(
         tracks, detections, std::chrono::steady_clock::now());
@@ -54,7 +43,8 @@ TEST_F(DataAssociatorTest, JointHypotesisMissedDetection) {
     Density density2(track2_vec);
     Track track1(density1);
     Track track2(density2);
-    std::vector<Track> tracks{track1, track2};
+    std::map<size_t, Track> tracks{{track1.id(), track1},
+                                   {track2.id(), track2}};
 
     JointHypothesis joint_hypothesis = dataAssociator.associate(
         tracks, detections, std::chrono::steady_clock::now());
