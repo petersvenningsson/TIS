@@ -1,6 +1,8 @@
-#include "JointHypothesis.h"
+#include "tis/JointHypothesis.h"
 
 #include "UniqueId.h"
+
+namespace tis {
 
 JointHypothesis::JointHypothesis(const std::vector<Hypothesis>& hypotheses)
     : hypotheses_(hypotheses), weight_(0) {
@@ -60,3 +62,5 @@ bool JointHypothesis::operator==(const JointHypothesis& rhs) const {
 double JointHypothesis::weight(void) const {
     return weight_;
 }
+
+}  // namespace tis

@@ -23,7 +23,7 @@ TEST_F(DataAssociatorTest, JointHypothesisTrueDetection) {
     std::map<size_t, Track> tracks{{track1.id(), track1},
                                    {track2.id(), track2}};
 
-    JointHypothesis joint_hypothesis = dataAssociator.associate(
+    tis::JointHypothesis joint_hypothesis = dataAssociator.associate(
         tracks, detections, std::chrono::steady_clock::now());
 
     ASSERT_EQ(*(joint_hypothesis.hypotheses()[0].detection()), detection1);
@@ -46,7 +46,7 @@ TEST_F(DataAssociatorTest, JointHypotesisMissedDetection) {
     std::map<size_t, Track> tracks{{track1.id(), track1},
                                    {track2.id(), track2}};
 
-    JointHypothesis joint_hypothesis = dataAssociator.associate(
+    tis::JointHypothesis joint_hypothesis = dataAssociator.associate(
         tracks, detections, std::chrono::steady_clock::now());
 
     ASSERT_FALSE(joint_hypothesis.hypotheses()[0].detection().has_value());

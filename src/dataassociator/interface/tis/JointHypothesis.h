@@ -2,6 +2,8 @@
 
 #include "Hypothesis.h"
 
+namespace tis {
+
 /**
  * A class descring a joint hypothesis.
  *
@@ -18,9 +20,9 @@ class JointHypothesis {
     bool isValid(void) const;
     double weight(void) const;
 
-#ifndef UNIT_TEST
    private:
-#endif
     std::vector<Hypothesis> hypotheses_;
     double weight_;
 };
+
+}  // namespace tis

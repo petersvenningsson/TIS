@@ -2,7 +2,9 @@
 
 #include <algorithm>
 
-#define ASSOCIATION_DISANCE (1.0)
+#include "tis/JointHypothesis.h"
+
+constexpr static double ASSOCIATION_DISANCE = (1.0);
 
 /**
  * Default constructor using default settings.
@@ -43,7 +45,7 @@ void Tracker::update(const std::vector<Detection>& detections) {
     */
 
     auto timestamp = std::chrono::steady_clock::now();
-    JointHypothesis joint_hypothesis =
+    tis::JointHypothesis joint_hypothesis =
         data_associator_.associate(tracks_, detections, timestamp);
 
     /* update associated tracks with associated detections */

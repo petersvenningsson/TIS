@@ -20,5 +20,4 @@ target_include_directories(models PUBLIC
 target_link_libraries(models PUBLIC
 	                  Eigen3::Eigen)
 
-include(Coverage)
 EnableCoverage(models)

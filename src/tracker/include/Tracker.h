@@ -4,8 +4,8 @@
 #include <map>
 #include <vector>
 
-#include "DataAssociator.h"
 #include "Density.h"
+#include "tis/DataAssociator.h"
 
 /**
  * A class describing a Kalman based single hypothesis mulit-object tracker.
@@ -41,7 +41,7 @@ class Tracker {
     void update(const std::vector<Detection>& detections);
 
    private:
-    DataAssociator data_associator_;
+    tis::DataAssociator data_associator_;
     void groomTracks();
     void confirmTracks();
     void initializeTrack(Eigen::Vector3d detection);

@@ -20,5 +20,4 @@ target_link_libraries(hypothesiser PUBLIC
 	                 types
                      Eigen3::Eigen)
 
-include(Coverage)
 EnableCoverage(hypothesiser)

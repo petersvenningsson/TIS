@@ -22,5 +22,4 @@ target_link_libraries(tracker PUBLIC
                       hypothesiser 
 	                  Eigen3::Eigen)
 
-include(Coverage)
 EnableCoverage(tracker)

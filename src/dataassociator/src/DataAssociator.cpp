@@ -1,11 +1,13 @@
-#include "DataAssociator.h"
+#include "tis/DataAssociator.h"
+
+namespace tis {
 
 DataAssociator::DataAssociator(const Hypothesiser& hypothesiser)
     : hypothesiser_(hypothesiser) {
 }
 
 /* Make this a template function for any container */
-JointHypothesis DataAssociator::associate(
+tis::JointHypothesis DataAssociator::associate(
     const std::map<size_t, Track>& tracks,
     const std::vector<Detection>& detections,
     const std::chrono::time_point<std::chrono::steady_clock>& timestamp) {
@@ -18,7 +20,7 @@ JointHypothesis DataAssociator::associate(
     }
 
     /* generate all valid joint hypotheses */
-    std::vector<JointHypothesis> all_joint_hypotheses =
+    std::vector<tis::JointHypothesis> all_joint_hypotheses =
         generateAllJointHypotheses(hypotheses_by_track);
 
     std::sort(all_joint_hypotheses.rbegin(), all_joint_hypotheses.rend());
@@ -26,7 +28,7 @@ JointHypothesis DataAssociator::associate(
     all_joint_hypotheses.erase(
         std::remove_if(
             all_joint_hypotheses.begin(), all_joint_hypotheses.end(),
-            [](const JointHypothesis& obj) { return !obj.isValid(); }),
+            [](const tis::JointHypothesis& obj) { return !obj.isValid(); }),
         all_joint_hypotheses.end());
 
     return all_joint_hypotheses.at(0);
@@ -34,10 +36,10 @@ JointHypothesis DataAssociator::associate(
 
 void DataAssociator::recursiveCombine(
     const std::vector<std::vector<Hypothesis>>& input,
-    std::vector<JointHypothesis>& result, std::vector<Hypothesis> current,
+    std::vector<tis::JointHypothesis>& result, std::vector<Hypothesis> current,
     size_t depth) {
     if (depth == input.size()) {
-        result.push_back(JointHypothesis(current));
+        result.push_back(tis::JointHypothesis(current));
         return;
     }
 
@@ -48,9 +50,11 @@ void DataAssociator::recursiveCombine(
     }
 }
 
-std::vector<JointHypothesis> DataAssociator::generateAllJointHypotheses(
+std::vector<tis::JointHypothesis> DataAssociator::generateAllJointHypotheses(
     const std::vector<std::vector<Hypothesis>>& input) {
-    std::vector<JointHypothesis> result;
+    std::vector<tis::JointHypothesis> result;
     recursiveCombine(input, result, {}, 0);
     return result;
 }
+
+}  // namespace tis
