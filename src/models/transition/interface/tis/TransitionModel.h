@@ -3,7 +3,7 @@
 #include <Eigen/Dense>
 
 /**
- * A class which implements a constant velocity transition model.
+ * A base class for a transition model.
  */
 class TransitionModel {
    public:

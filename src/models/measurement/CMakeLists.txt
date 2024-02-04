@@ -1,5 +1,15 @@
 cmake_minimum_required(VERSION 3.5)
 
+add_library(measurementmodel_interface INTERFACE
+)
+
+add_library(tis::measurementmodel_interface ALIAS measurementmodel_interface)
+
+target_include_directories(measurementmodel_interface
+    INTERFACE
+        ${CMAKE_CURRENT_LIST_DIR}/interface
+)
+
 add_library(measurementmodel
     ${CMAKE_CURRENT_LIST_DIR}/src/LinearGaussianMeasurementModel.cpp
 )
@@ -13,6 +23,7 @@ target_include_directories(measurementmodel
 
 target_link_libraries(measurementmodel
     PUBLIC
+        tis::measurementmodel_interface
 	    types
 )
   
