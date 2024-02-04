@@ -7,7 +7,7 @@
 /**
  * A class which implements a linear gaussian measurement model.
  */
-class LinearGaussianMeasurementModel : MeasurementModel {
+class LinearGaussianMeasurementModel : public MeasurementModel {
    public:
     LinearGaussianMeasurementModel(
         const Eigen::Matrix<double, 3, 3>& noise_covariance);

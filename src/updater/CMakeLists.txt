@@ -19,3 +19,5 @@ target_link_libraries(updater
 )
   
 EnableCoverage(updater)
+
+add_subdirectory(test)

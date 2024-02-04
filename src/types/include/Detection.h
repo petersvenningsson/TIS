@@ -19,9 +19,7 @@ class Detection : public UniqueId {
               std::chrono::time_point<std::chrono::system_clock> timestamp);
     Eigen::Matrix<double, 3, 1> vector() const;
 
-#ifndef UNIT_TEST
    private:
-#endif
     Eigen::Matrix<double, 3, 1> vector_;
     std::chrono::time_point<std::chrono::system_clock> timestamp_;
 };
