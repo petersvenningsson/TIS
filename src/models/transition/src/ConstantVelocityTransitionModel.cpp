@@ -16,7 +16,7 @@ Eigen::Matrix<double, 6, 6> ConstantVelocityTransitionModel::matrix(
 
 Eigen::Matrix<double, 6, 1> ConstantVelocityTransitionModel::function(
     Eigen::Matrix<double, 6, 1> state_vector, double dt) {
-    matrix(dt) * state_vector;
+    return matrix(dt) * state_vector;
 }
 
 Eigen::Matrix<double, 6, 6> ConstantVelocityTransitionModel::covariance(

@@ -9,6 +9,7 @@ set(include_paths
     ${CMAKE_CURRENT_LIST_DIR}/src/Track.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/Density.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/UniqueId.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/State.cpp
     )
 
 add_library(types OBJECT
