@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Hypothesis.h"
+#include "tis/Hypothesis.h"
 
 namespace tis {
 

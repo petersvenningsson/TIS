@@ -25,9 +25,8 @@ class Hypothesis {
     std::optional<Detection> detection(void) const;
     Track track(void) const;
     bool missed_detection(void) const;
-#ifndef UNIT_TEST
+
    private:
-#endif
     Track track_;
     std::optional<Detection> detection_;
     double weight_;

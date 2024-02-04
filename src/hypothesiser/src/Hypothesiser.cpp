@@ -1,4 +1,4 @@
-#include "Hypothesiser.h"
+#include "tis/Hypothesiser.h"
 
 #include <algorithm>
 

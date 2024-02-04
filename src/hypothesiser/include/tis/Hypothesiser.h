@@ -4,8 +4,8 @@
 #include <vector>
 
 #include "Detection.h"
-#include "Hypothesis.h"
 #include "Track.h"
+#include "tis/Hypothesis.h"
 
 /**
  * Class responsable creating track hypothesis.
@@ -18,8 +18,7 @@ class Hypothesiser {
     std::vector<Hypothesis> hypothesise(
         const Track& track, std::vector<Detection> detections,
         std::chrono::time_point<std::chrono::steady_clock> timestamp);
-#ifndef UNIT_TEST
+
    private:
-#endif
     double missed_distance_;
 };

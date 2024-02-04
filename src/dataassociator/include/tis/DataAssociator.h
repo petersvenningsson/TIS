@@ -3,7 +3,7 @@
 #include <map>
 #include <vector>
 
-#include "Hypothesiser.h"
+#include "tis/Hypothesiser.h"
 #include "tis/JointHypothesis.h"
 
 namespace tis {

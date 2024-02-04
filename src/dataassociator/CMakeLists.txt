@@ -13,7 +13,8 @@ target_include_directories(dataassociator_interface
 
 target_link_libraries(dataassociator_interface
     PUBLIC
-        types)
+        hypothesiser_interface
+)
 
 add_library(dataassociator
         ${CMAKE_CURRENT_LIST_DIR}/src/DataAssociator.cpp
@@ -29,8 +30,8 @@ target_include_directories(dataassociator
 target_link_libraries(dataassociator
     PUBLIC
         tis::dataassociator_interface
+	    tis::hypothesiser
 	    types
-	    hypothesiser
         Eigen3::Eigen
 )
  

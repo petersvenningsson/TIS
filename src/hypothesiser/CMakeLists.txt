@@ -1,23 +1,38 @@
 cmake_minimum_required(VERSION 3.5)
 
-set(include_paths
-  ${CMAKE_CURRENT_LIST_DIR}/include
-    )
+add_library(hypothesiser_interface
+    ${CMAKE_CURRENT_LIST_DIR}/src/Hypothesis.cpp
+)
 
-  set(source_files
-      ${CMAKE_CURRENT_LIST_DIR}/src/Hypothesiser.cpp
-      )
+add_library(tis::hypothesiser_interface ALIAS hypothesiser_interface)
 
-add_library(hypothesiser OBJECT
-           ${source_files}
-           )
+target_include_directories(hypothesiser_interface
+    PUBLIC
+        ${CMAKE_CURRENT_LIST_DIR}/interface
+)
 
-target_include_directories(hypothesiser PUBLIC
-                           ${include_paths}
-                           )
+target_link_libraries(hypothesiser_interface
+    PUBLIC
+        types)
 
-target_link_libraries(hypothesiser PUBLIC
-	                 types
-                     Eigen3::Eigen)
+add_library(hypothesiser
+    ${CMAKE_CURRENT_LIST_DIR}/src/Hypothesiser.cpp
+)
+
+add_library(tis::hypothesiser ALIAS hypothesiser)
+
+target_include_directories(hypothesiser
+    PUBLIC
+        ${CMAKE_CURRENT_LIST_DIR}/include
+)
+
+target_link_libraries(hypothesiser
+    PUBLIC
+        tis::hypothesiser_interface
+        types
+        Eigen3::Eigen
+)
+
+add_subdirectory(test)
 
 EnableCoverage(hypothesiser)
