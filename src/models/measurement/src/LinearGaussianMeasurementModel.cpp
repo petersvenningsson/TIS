@@ -1,4 +1,4 @@
-#include "LinearGaussianMeasurementModel.h"
+#include "tis/LinearGaussianMeasurementModel.h"
 
 LinearGaussianMeasurementModel::LinearGaussianMeasurementModel(
     const Eigen::Matrix<double, 3, 3>& noise_covariance)
@@ -11,6 +11,11 @@ LinearGaussianMeasurementModel::LinearGaussianMeasurementModel(
 
 Eigen::Matrix<double, 3, 6> LinearGaussianMeasurementModel::matrix(void) {
     return matrix_;
+}
+
+Eigen::Matrix<double, 3, 1> LinearGaussianMeasurementModel::function(
+    Eigen::Matrix<double, 6, 1> state_vector) {
+    return matrix_ * state_vector;
 }
 
 Eigen::Matrix<double, 3, 3> LinearGaussianMeasurementModel::covariance(void) {

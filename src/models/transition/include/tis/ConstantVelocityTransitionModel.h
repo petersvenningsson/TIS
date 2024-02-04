@@ -10,8 +10,9 @@ class ConstantVelocityTransitionModel {
     ConstantVelocityTransitionModel(double velocity_sigma);
     Eigen::Matrix<double, 6, 6> matrix(double dt);
     Eigen::Matrix<double, 6, 6> covariance(double dt);
-#ifndef UNIT_TEST
+    Eigen::Matrix<double, 6, 1> function(
+        Eigen::Matrix<double, 6, 1> state_vector, double dt);
+
    private:
-#endif
     double velocity_sigma_;
 };

@@ -1,4 +1,4 @@
-#include "ConstantVelocityTransitionModel.h"
+#include "tis/ConstantVelocityTransitionModel.h"
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>

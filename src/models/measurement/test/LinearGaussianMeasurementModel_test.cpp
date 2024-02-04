@@ -1,4 +1,4 @@
-#include "LinearGaussianMeasurementModel.h"
+#include "tis/LinearGaussianMeasurementModel.h"
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
